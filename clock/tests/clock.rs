@@ -185,15 +185,12 @@ fn test_subtract_more_than_an_hour() {
 }
 
 #[test]
-#[ignore]
 fn test_subtract_across_midnight() {
     let clock = Clock::new(0, 3).add_minutes(-4);
     assert_eq!(clock.to_string(), "23:59");
 }
-// 00:59 mins = -1
 
 #[test]
-#[ignore]
 fn test_subtract_more_than_two_hours() {
     let clock = Clock::new(0, 0).add_minutes(-160);
     assert_eq!(clock.to_string(), "21:20");
@@ -206,14 +203,12 @@ fn test_subtract_more_than_two_hours_with_borrow() {
 }
 
 #[test]
-#[ignore]
 fn test_subtract_more_than_one_day() {
     let clock = Clock::new(5, 32).add_minutes(-1500);
     assert_eq!(clock.to_string(), "04:32");
 }
 
 #[test]
-#[ignore]
 fn test_subtract_more_than_two_days() {
     let clock = Clock::new(2, 20).add_minutes(-3000);
     assert_eq!(clock.to_string(), "00:20");
