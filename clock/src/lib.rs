@@ -1,8 +1,11 @@
+#![allow(clippy::derive_partial_eq_without_eq)]
+
 use std::fmt::Display;
 
 /// The maximum amount of mins in a full day, "overflows" to 00:00 with one more min added
 const MAX_MINS: i32 = 1440;
 
+#[derive(Copy, Clone, Debug, PartialEq)]
 pub struct Clock {
     minutes: i32,
 }
@@ -14,13 +17,12 @@ impl Clock {
         Self { minutes }
     }
 
-    pub fn add_minutes(&mut self, minutes: i32) -> &mut Self {
+    pub fn add_minutes(&mut self, minutes: i32) -> Self {
         self.minutes += minutes;
-        self
+        *self
     }
 
     fn convert(&self) -> (i32, i32) {
-        println!("{}", self.minutes);
         let hours = (self.minutes / 60).rem_euclid(24);
         let minutes = self.minutes.rem_euclid(60);
 
