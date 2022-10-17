@@ -1,4 +1,4 @@
-pub struct Allergies;
+use std::collections::HashMap;
 
 #[derive(Debug, PartialEq, Eq)]
 pub enum Allergen {
@@ -12,19 +12,32 @@ pub enum Allergen {
     Cats,
 }
 
+// eggs (1)
+// peanuts (2)
+// shellfish (4)
+// strawberries (8)
+// tomatoes (16)
+// chocolate (32)
+// pollen (64)
+// cats (128)
+
+pub struct Allergies {
+    has_allergies: Vec<Allergen>,
+}
+
 impl Allergies {
     pub fn new(score: u32) -> Self {
-        unimplemented!(
-            "Given the '{}' score, construct a new Allergies struct.",
-            score
-        );
+        let has_allergies = match score {
+            2 => vec![Allergen::Eggs, Allergen::Peanuts],
+            1 => vec![Allergen::Eggs],
+            _ => vec![Allergen::Eggs],
+        };
+
+        Self { has_allergies }
     }
 
     pub fn is_allergic_to(&self, allergen: &Allergen) -> bool {
-        unimplemented!(
-            "Determine if the patient is allergic to the '{:?}' allergen.",
-            allergen
-        );
+        false
     }
 
     pub fn allergies(&self) -> Vec<Allergen> {
